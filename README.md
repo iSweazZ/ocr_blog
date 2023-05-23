@@ -18,7 +18,7 @@ Vous trouverez également, dans le dossier **diagrams**, les diagrammes UML con�
 
 ## Remarque
 
-Pour pouvoir installer ce projet, le gestionnaire de dépendance **Composer** doit être présent sur votre machine, ainsi qu'un serveur local sous **PHP 7.4**. Si vous ne disposez pas de ces outils, vous pourrez les télécharger et les installer, en suivant ces liens :
+Pour pouvoir installer ce projet, le gestionnaire de dépendance **Composer** doit être présent sur votre machine, ainsi qu'un serveur local sous **PHP 8.2**. Si vous ne disposez pas de ces outils, vous pourrez les télécharger et les installer, en suivant ces liens :
 - Télécharger [Composer](https://getcomposer.org/)
 - Télécharger [Wamp](https://www.wampserver.com/) (Windows)
 - Télécharger [Mamp](https://www.wampserver.com/) (Mamp)
