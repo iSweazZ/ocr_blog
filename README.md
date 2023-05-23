@@ -1,4 +1,7 @@
 # OpenClassrooms
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6c3ee61817084a68917c9fb62b058773)](https://app.codacy.com/gh/iSweazZ/ocr_blog?utm_source=github.com&utm_medium=referral&utm_content=iSweazZ/ocr_blog&utm_campaign=Badge_Grade)
+
 - Développeur d'application
 - Parcours PHP/Symfony
 - Projet 5
