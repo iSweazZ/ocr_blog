@@ -1,0 +1,20 @@
+{
+  "require": {
+    "twig/twig": "2.*",
+    "michelf/php-markdown": "^2.0",
+    "league/html-to-markdown": "^5.1",
+    "ext-pdo": "*",
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Application\\": "src/"
+    }
+  },
+  "require-dev": {
+    "symplify/easy-coding-standard": "^11.3"
+  },
+  "scripts": {
+    "ecs": "vendor/bin/ecs check src/ --fix"
+  }
+}

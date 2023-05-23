@@ -1,0 +1,27 @@
+{% block footer %}
+  <footer>
+    <div class="top-section">
+      <div class="wrapper">
+          <a class="logo" href="/">
+            <img src="/ressources/images/logo-white.svg" alt="">
+            <p>BADI Wissem</p>
+          </a>
+      </div>
+    </div>
+    <div class="bottom-section">
+      <div class="wrapper">
+        <div class="legal">
+          <p class="copyright">Copyright © {{ 'now' | date('Y') }}</p>
+          <p class="rights">Tous droits réservés</p>
+        </div>
+        <div class="links">
+          <ul>
+            <li><a target="_blank" href="mailto:wissem26500@gmail.com"><i class="fas fa-envelope"></i></a></li>
+            <li><a target="_blank" href="https://github.com/iSweazZ"><i class="fab fa-github"></i></a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/wissem-badi-b28067191/"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

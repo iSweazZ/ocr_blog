@@ -1,0 +1,98 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Développeur web back-end & front-end{% endblock %}
+
+{% block content %}
+    <section class="banner z-index-2 home">
+        <div class="wrapper">
+            <div class="introduction z-index-2">
+                <div class="title">
+                    <h1><span style="font-weight: 400;">Développeur d'application</span> Symfony/React</h1>
+                    <p><b>Site vitrine</b>, <b>intégration</b>, <b>programmation</b>, <b>informatique</b>, <b>application web</b>, <b>responsive</b>...</p>
+                    <p>...une solution <b>sur-mesure</b> adaptée à <b>vos besoin</b> !</p>
+                    <button id="scroll-to-partners" role="button"><i class="fas fa-arrow-down"></i></button>
+                </div>
+                <div class="box fade-in-up">
+                    <h2 style="height: 150px">Votre projet en toute en <span style="font-size: var(--fs-very-big-title);">
+                        <span>S</span><span>i</span><span>m</span><span>p</span><span>l</span><span>i</span><span>c</span><span>i</span><span>t</span><span>é</span><span>!</span></span></h2>
+                    <p class="center-text">Actuellement en formation chez <b>OpenClassrooms</b>, j'apprends le <b>développement back-end</b></p>
+                    <ul class="stats">
+                        <li class="stat">
+                            <i class="fas fa-code"></i>
+                            <p><b>+5</b> ans</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom z-index-1" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <section id="partners" class="partners">
+        <div class="wrapper">
+            <ul>
+                <li><a target="_blank" href="https://github.com/iSweazZ"><img src="/ressources/images/logos/github.png" loading="lazy" alt=""></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/in/wissem-badi-b28067191/"><img src="/ressources/images/logos/linkedin.png" loading="lazy" alt=""></a></li>
+            </ul>
+        </div>
+    </section>
+    <main class="archive z-index-2 offset-next-element">
+        <div class="wrapper">
+            <h2 class="section-title">Derniers articles</h2>
+            <div class="posts">
+                {% for post in posts %}
+                    <div class="post fade-in-up">
+                        <img loading="lazy" class="thumbnail" src="/ressources/images/posts/{{ post.image }}" alt="">
+                        {% if session.role == 'Admin' %}
+                            <div class="actions icon-spacing white">
+                                <a href="/article/modification/{{ post.identifier }}"><i class="fas fa-edit"></i>Modifier</a>
+                                <a href="/article/suppression/{{ post.identifier }}"><i class="fas fa-trash"></i>Supprimer</a>
+                            </div>
+                        {% endif %}
+                        <div class="content">
+                            <h3 class="title">{{ post.title }}</h3>
+                            <p class="description">{{ post.content | striptags | slice(0, 100) ~ '...' }}</p>
+                            <a class="button-secondary rotate-icon button-white" href="/article/{{ post.identifier }}">Lire l'article<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    <section class="portrait position-relative">
+        <img class="vector-shape vector-shape-top" src="/ressources/images/vectors/vector-top-right-white-3.svg" alt="">
+        <div class="wrapper">
+
+            <div class="presentation">
+                <img class="profile-picture" src="/ressources/images/wa.svg" alt="" style="color: white">
+                <h2>Bienvenue sur mon blog&nbsp!</h2>
+                <p>Développeur junior, j'ai appris à développer des sites web depuis le lycée en autodidacte, mon parcours d'apprentissage m'a ammené à développer mes compétences dans la partie <b>front-end</b> où j'ai appris à designer des sites web</p>
+                <p>Malgré ma préférence pour la partie <b>front-end</b> où je peux laisser parler mon imagination, j'apprends désormais à maitriser la partie <b>back-end</b> actuellement en alternance, j'ai appris à maitriser le Framework <b>Laravel</b> ainsi que des frameworks front-end comme <b>VueJS</b> et <b>Twig</b> j'espère devenir un développeur <b>Full-Stack</b> et pouvoir créer une application web de bout en bout</p>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-left-white.svg" alt="">
+    </section>
+    <section class="skills position-relative z-index-2">
+        <img class="vector-shape vector-shape-top" src="/ressources/images/vectors/vector-top-left-white-2.svg" alt="">
+        <div class="wrapper">
+            <h2 class="section-title">Compétences</h2>
+            <ul>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/html-logo.png" alt=""><h3 style="color: #e44d26;">HTML</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/sass-logo.png" alt=""><h3 style="color: #cd6799;">Sass</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/javascript-logo.png" alt=""><h3 style="color: #000000;">Javascript</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/mysql-logo.png" alt=""><h3 style="color: #00758f;">MySQL</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/php-logo.png" alt=""><h3 style="color: #8993be;">PHP</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/symfony-logo.png" alt=""><h3 style="color: #1a171b;">Symfony</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/react-logo.png" alt=""><h3 style="color: #087ea4;">React</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/wordpress-logo.png" alt=""><h3 style="color: #32373c;">Wordpress</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/git-logo.png" alt=""><h3 style="color: #de4c36;">Git</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/twig-logo.png" alt=""><h3 style="color: #52820f;">Twig</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/photoshop-logo.png" alt=""><h3 style="color: #31a8ff;">Photoshop</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/illustrator-logo.png" alt=""><h3 style="color: #df8600;">Illustrator</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/indesign-logo.png" alt=""><h3 style="color: #ff3068;">InDesign</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/jquery-logo.png" alt=""><h3 style="color: #1266a9;">jQuery</h3></li>
+                <li class="fade-in-up"><img loading="lazy" src="/ressources/images/logos/figma-logo.png" alt=""><h3 style="color: #a259ff;">Figma</h3></li>
+            </ul>
+        </div>
+    </section>
+    {% include 'partials/work.twig' with { vector_shape : 'vector-top-left-very-light-grey-2.svg' } %}
+{% endblock %}

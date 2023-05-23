@@ -1,0 +1,47 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Tous les articles{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/monokai/monokai-3.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Tous les articles</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <main class="archive z-index-2 offset-next-element">
+        <div class="wrapper">
+            <div class="posts">
+                {% for post in posts %}
+                    <div class="post fade-in-up">
+                        <img class="thumbnail" src="/ressources/images/posts/{{ post.image }}" alt="">
+                            {% if session.role == 'Admin' %}
+                                <div class="actions icon-spacing white">
+                                    <a href="/article/modification/{{ post.identifier }}"><i class="fas fa-edit"></i>Modifier</a>
+                                    <a href="/article/suppression/{{ post.identifier }}"><i class="fas fa-trash"></i>Supprimer</a>
+                                </div>
+                            {% endif %}
+                        <div class="content">
+                            <h3 class="title">{{ post.title }}</h3>
+                            <p class="description">{{ post.content | striptags | slice(0, 100) ~ '...' }}</p>
+                            <a class="button-secondary rotate-icon button-white" href="/article/{{ post.identifier }}">Lire l'article<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+                {% if posts is empty %}
+                    <div class="box error">
+                        <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+                        <div class="question">
+                            <h2>Il n'y a rien à afficher !</h2>
+                            <p>Aucun nouveau commentaire..</p>
+                        </div>
+                        <a class="button-primary button-pink" href="/"><i class="fas fa-home"></i>Revenir à l'accueil</a>
+                    </div>
+                {% endif %}
+        </div>
+    </main>
+    {% include 'partials/work.twig' with { vector_shape : 'vector-top-left-white-2.svg' } %}
+{% endblock %}

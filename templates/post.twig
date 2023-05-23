@@ -1,0 +1,64 @@
+{% extends 'layout.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/posts/{{ post.image }}');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>{{ post.title }}</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <main class="single z-index-2">
+        <div class="wrapper">
+            <div class="post page">
+                <div class="description formated">{{ post.content | raw }}</div>
+                <div class="infos icon-spacing">
+                    <h3><i class="fas fa-user"></i>{{ post.username }}</h3>
+                    <p><i class="fas fa-calendar"></i>{{ post.creationDate }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% if (comments is not empty) or (session.role is defined) %}
+        <section class="comments-section position-relative">
+            <img class="vector-shape vector-shape-top" src="/ressources/images/vectors/vector-top-left-white-2.svg" alt="">
+            <div class="wrapper">
+                {% if (comments is not empty) %}
+                    <h2 class="section-title">Commentaires</h2>
+                    <div class="comments">
+                        {% for comment in comments %}
+                            <div class="comment">
+                                <div class="header">
+                                    <p class="username icon-spacing"><i class="fas fa-user"></i>{{ comment.username }}</p>
+                                    {% if (session.role == 'Admin') or (session.id == comment.userId) %}
+                                        <div class="actions icon-spacing">
+                                            {% if (session.role == 'Admin') %}
+                                                <a class="hide" href="/commentaire/annulation/{{ comment.identifier }}"><i class="fas fa-eye-slash"></i>Retirer</a>
+                                            {% endif %}
+                                            <a class="edit" href="/commentaire/modification/{{ comment.identifier }}"><i class="fas fa-edit"></i>Modifier</a>
+                                            <a class="delete" href="/commentaire/suppression/{{ comment.identifier }}"><i class="fas fa-trash"></i>Supprimer</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <p class="date">{{ comment.creationDate }}</p>
+                                <div class="content">
+                                    <p>{{ comment.comment }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if session.role is defined %}
+                    <h2 class="section-title">Ajouter un commentaire</h2>
+                    <form action="/article/ajout-commentaire/{{ post.identifier }}" method="post">
+                        <textarea id="comment" name="comment"></textarea>
+                        <input class="button-form button-very-dark-grey" type="submit" />
+                    </form>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

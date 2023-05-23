@@ -1,0 +1,68 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Gestion des commentaires{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/monokai/monokai-2.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Gestion des commentaires</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <section class="management position-relative">
+        <div class="wrapper">
+            {% for post in posts %}
+                <div class="single page">
+                    <div class="post">
+                        <div class="header">
+                            <h3 class="title icon-spacing"><i class="fas fa-newspaper"></i>{{ post.title }}</h3>
+                            {% if session.role == 'Admin' %}
+                                <div class="actions icon-spacing white">
+                                    <a class="hide" href="/article/{{ post.identifier }}"><i class="fas fa-eye"></i>Voir</a>
+                                    <a class="edit" href="/article/modification/{{ post.identifier }}"><i class="fas fa-edit"></i>Modifier</a>
+                                    <a class="delete" href="/article/suppression/{{ post.identifier }}"><i class="fas fa-trash"></i>Supprimer</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="description formated">{{ post.content | raw }}</div>
+                            <div class="infos icon-spacing">
+                                <h3><i class="fas fa-user"></i>{{ post.username }}</h3>
+                                <p><i class="fas fa-calendar"></i>{{ post.creationDate }}</p>
+                            </div>
+                        </div>
+                        {% for comment in post.hiddenComments %}
+                            <div class="comment">
+                                <div class="header">
+                                    <p class="username icon-spacing"><i class="fas fa-user"></i>{{ comment.username }}</p>
+                                    {% if (session.role == 'Admin') or (session.id == comment.user_id) %}
+                                        <div class="actions icon-spacing">
+                                            <a class="hide" href="/commentaire/validation/{{ comment.identifier }}"><i class="fas fa-eye"></i>Accepter</a>
+                                            <a class="edit" href="/commentaire/modification/{{ comment.identifier }}"><i class="fas fa-edit"></i>Modifier</a>
+                                            <a class="delete" href="/commentaire/suppression/{{ comment.identifier }}"><i class="fas fa-trash"></i>Supprimer</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <p class="date">{{ comment.creationDate }}</p>
+                                <div class="content">
+                                    <p>{{ comment.comment }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
+            {% endfor %}
+            {% if posts is empty %}
+                <div class="box error">
+                    <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="question">
+                        <h2>Il n'y a rien à afficher !</h2>
+                        <p>Aucun nouveau commentaire..</p>
+                    </div>
+                    <a class="button-primary button-blue" href="/"><i class="fas fa-home"></i>Revenir à l'accueil</a>
+                </div>
+            {% endif %}
+        </div>
+        <img class="vector-shape vector-shape-bottom z-index-negative-1" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+    </section>
+{% endblock %}

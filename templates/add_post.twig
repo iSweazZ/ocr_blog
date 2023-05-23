@@ -1,0 +1,107 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Ajouter un article{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/monokai/monokai-4.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Ajouter un article</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <section class="add-post position-relative">
+        <div class="wrapper">
+            <div class="page management">
+                <div class="post icon-spacing">
+                    <form action="/ajout-article" method="post" enctype="multipart/form-data">
+                    <div class="form-field">
+                        <div class="header">
+                            <label class="title" for="title"><i class="fas fa-newspaper"></i>Titre de l'article</label>
+                        </div>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <div class="form-field">
+                        <div class="header">
+                            <label class="title" for="content"><i class="fas fa-pen-nib"></i>Contenu de l'article</label>
+                            <div class="actions has-tooltip icon-spacing">
+                                <p><i class="fas fa-question-circle"></i>Infos</p>
+                                <ul class="markdown-tooltip">
+                                    <li>
+                                        <p>Heading</p>
+                                        <ul>
+                                            <li># H1</li>
+                                            <li>## H2</li>
+                                            <li>### H3</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Bold</p>
+                                        <ul>
+                                            <li>**bold text**</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Italic</p>
+                                        <ul>
+                                            <li>*italicized text*</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Blockquote</p>
+                                        <ul>
+                                            <li>> blockquote</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Ordered list</p>
+                                        <ul>
+                                            <li>1. First item</li>
+                                            <li>2. Second item</li>
+                                            <li>3. Third item</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Unordered list</p>
+                                        <ul>
+                                            <li>- First item</li>
+                                            <li>- Second item</li>
+                                            <li>- Third item</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Code</p>
+                                        <ul>
+                                            <li>`code`</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Link</p>
+                                        <ul>
+                                            <li>[title](https://www.example.com)</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Image</p>
+                                        <ul>
+                                            <li>![alt text](image.jpg)"</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <textarea id="content" name="content"></textarea>
+                    </div>
+                    <input class="input-file" type="file" name="file">
+                    <div class="infos">
+                        <h3><i class="fas fa-user"></i>{{ session.username }}</h3>
+                    </div>
+                    <input class="button-form button-very-dark-blue" type="submit" />
+                </form>
+                </div>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom z-index-negative-1" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+    </section>
+{% endblock %}

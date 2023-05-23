@@ -1,0 +1,34 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/monokai/monokai-2.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Se connecter</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <section class="login position-relative">
+        <div class="wrapper wrapper-small">
+            <form action="/connexion" class="page icon-spacing" method="post">
+                <div class="form-field">
+                    <div class="header title">
+                        <label for="email"><i class="fas fa-at"></i>Email</label><br />
+                    </div>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-field">
+                    <div class="header title">
+                        <label for="password"><i class="fas fa-key"></i>Password</label><br />
+                    </div>
+                    <input type="password" id="password" name="password">
+                </div>
+                <input class="button-form button-very-dark-purple" type="submit" value="Se connecter" />
+            </form>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+    </section>
+{% endblock %}

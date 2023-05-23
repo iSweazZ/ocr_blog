@@ -1,0 +1,113 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Modification de l'article{% endblock %}
+
+{% block content %}
+   <section class="banner offset-next-element" style="background-image: url('/ressources/images/posts/{{ post.image }}');">
+      <div class="wrapper">
+         <div class="title">
+            <h1>Modification de l'article</h1>
+         </div>
+      </div>
+      <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+   </section>
+   <section class="update-post position-relative">
+      <div class="wrapper">
+         <div class="page management">
+            <div class="post icon-spacing">
+               <form action="/article/modification/{{ post.identifier }}" method="post" enctype="multipart/form-data">
+                  <div class="form-field">
+                     <div class="header">
+                        <label class="title"><i class="fas fa-newspaper"></i>{{ post.title }}</label>
+                        {% if session.role == 'Admin' %}
+                           <div class="actions icon-spacing">
+                              <a class="hide" href="/article/{{ post.identifier }}"><i class="fas fa-eye"></i>Voir</a>
+                           </div>
+                        {% endif %}
+                     </div>
+                     <input type="text" id="title" name="title" value="{{ post.title }}">
+                  </div>
+                  <div class="form-field">
+                     <div class="header">
+                        <h3 class="title"><label for="content"><i class="fas fa-pen-nib"></i>Contenu de l'article</label></h3>
+                        <div class="actions has-tooltip icon-spacing">
+                           <p><i class="fas fa-question-circle"></i>Infos</p>
+                           <ul class="markdown-tooltip">
+                              <li>
+                                 <p>Heading</p>
+                                 <ul>
+                                    <li># H1</li>
+                                    <li>## H2</li>
+                                    <li>### H3</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Bold</p>
+                                 <ul>
+                                    <li>**bold text**</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Italic</p>
+                                 <ul>
+                                    <li>*italicized text*</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Blockquote</p>
+                                 <ul>
+                                    <li>> blockquote</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Ordered list</p>
+                                 <ul>
+                                    <li>1. First item</li>
+                                    <li>2. Second item</li>
+                                    <li>3. Third item</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Unordered list</p>
+                                 <ul>
+                                    <li>- First item</li>
+                                    <li>- Second item</li>
+                                    <li>- Third item</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Code</p>
+                                 <ul>
+                                    <li>`code`</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Link</p>
+                                 <ul>
+                                    <li>[title](https://www.example.com)</li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Image</p>
+                                 <ul>
+                                    <li>![alt text](image.jpg)</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <textarea id="content" name="content">{{ post.content }}</textarea>
+                  </div>
+                  <input class="input-file" type="file" name="file">
+                  <div class="infos">
+                     <h3><i class="fas fa-user"></i>{{ user }}</h3>
+                     <p><i class="fas fa-calendar"></i>{{ post.creationDate }}</p>
+                  </div>
+                  <input class="button-form button-very-dark-blue" type="submit" value="Modifier" />
+               </form>
+            </div>
+         </div>
+      </div>
+      <img class="vector-shape vector-shape-bottom z-index-negative-1" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+   </section>
+{% endblock %}

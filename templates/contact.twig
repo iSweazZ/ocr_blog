@@ -1,0 +1,52 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/monokai/monokai-5.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Contact</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <section class="contact position-relative">
+        <div class="wrapper wrapper-small">
+                <form action="/contact" class="page icon-spacing" method="post">
+                    <div class="form-field">
+                        <div class="header">
+                            <label for="firstname" class="title"><i class="fas fa-user"></i>Prénom</label><br />
+                        </div>
+                        <input type="text" id="firstname" name="firstname" />
+                    </div>
+                    <div class="form-field">
+                        <div class="header">
+                            <label for="lastname" class="title"><i class="fas fa-address-card"></i>Nom</label><br />
+                        </div>
+                        <input type="text" id="lastname" name="lastname" />
+                    </div>
+                    <div class="form-field">
+                        <div class="header">
+                            <label for="email" class="title"><i class="fas fa-at"></i>Email</label><br />
+                        </div>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-field subject-field">
+                        <div class="header">
+                            <label for="subject" class="title"><i class="fas fa-clipboard"></i>Objet</label><br />
+                        </div>
+                        <input type="subject" id="subject" name="subject">
+                    </div>
+                    <div class="form-field">
+                        <div class="header">
+                            <label for="message" class="title"><i class="fas fa-envelope"></i>Message</label><br />
+                        </div>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <input class="button-form button-very-dark-yellow" type="submit" />
+                </form>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+    </section>
+{% endblock %}

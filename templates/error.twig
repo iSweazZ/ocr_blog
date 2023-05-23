@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Une erreur est survenue{% endblock %}
+
+{% block content %}
+    <section class="banner" style="background-image: url('/ressources/images/monokai/monokai-6.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Une erreur est survenue</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-dark-pink.svg" alt="">
+    </section>
+    <section class="error position-relative">
+        <div class="wrapper">
+            <div class="box">
+                <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="question">
+                    <h2>Vous cherchez quelque chose ?</h2>
+                    <p>{{ errorMessage }}</p>
+                </div>
+                <a class="button-primary button-pink" href="/"><i class="fas fa-home"></i>Revenir à l'accueil</a>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+    </section>
+{% endblock %}

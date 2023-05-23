@@ -1,0 +1,47 @@
+{% block navbar %}
+  <nav>
+    <div class="navbar">
+        <div class="wrapper">
+            <div class="logo">
+                <a href="/">
+                    <img src="/ressources/images/logo.svg" alt=""> BADI Wissem
+                </a>
+            </div>
+            <a type="button" class="open-menu mobile-only"><i class="fas fa-bars"></i></a>
+            <div class="menu desktop-only">
+                <ul class="navigation-links">
+                    {% if session.is_authenticated == true %}
+                        <li>Bonjour <span style="font-weight: 600;">{{ session.username }}</span> !</li>
+                    {% endif %}
+                        <li><a class="button-tertiary button-black" href="/articles">Articles</a></li>
+                        <li><a class="button-tertiary button-black" href="/contact">Contact</a></li>
+                </ul>
+                {% if session.is_authenticated != true %}
+                    <ul class="navigation-user">
+                        <li><a class="button-secondary button-black" href="/inscription"><i class="fas fa-user-plus"></i>S'enregistrer</a></li>
+                        <li><a class="button-primary button-black" href="/connexion"><i class="fas fa-sign-in-alt"></i>Se connecter</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navigation-user">
+                        <li><a class="button-primary button-black" href="/deconnexion"><i class="fas fa-sign-out-alt"></i>Se déconnecter</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  {% if session.role == 'Admin' %}
+      <div class="navbar-manager">
+          <div class="wrapper">
+              <ul>
+                  {% if (post is not empty) and (post.identifier is not empty) %}
+                      <li><a href="/article/modification/{{ post.identifier }}">Modifier l'article</a></li>
+                      <li><a href="/article/suppression/{{ post.identifier }}">Supprimer l'article</a></li>
+                  {% endif %}
+                  <li><a class="button-tertiary button-white" href="/gestion-commentaires">Gestion des commentaires</a></li>
+                  <li><a class="button-tertiary button-white" href="/ajout-article">Ajouter un article</a></li>
+              </ul>
+          </div>
+      </div>
+  {% endif %}
+  </nav>
+{% endblock %}

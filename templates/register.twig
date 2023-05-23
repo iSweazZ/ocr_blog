@@ -1,0 +1,40 @@
+{% extends 'layout.twig' %}
+
+{% block title %}S'enregistrer{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/monokai/monokai-7.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>S'enregistrer</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <section class="register position-relative">
+        <div class="wrapper wrapper-small">
+            <form action="/inscription" class="page icon-spacing" method="post">
+                <div class="form-field">
+                    <div class="header title">
+                        <label for="username"><i class="fas fa-user"></i>Nom d'utilisateur</label><br />
+                    </div>
+                    <input type="text" id="username" name="username" />
+                </div>
+                <div class="form-field">
+                    <div class="header title">
+                        <label for="email"><i class="fas fa-at"></i>Email</label><br />
+                    </div>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-field">
+                    <div class="header title">
+                        <label for="password"><i class="fas fa-key"></i>Mot de passe</label><br />
+                    </div>
+                    <input type="password" id="password" name="password">
+                </div>
+                <input class="button-form button-dark-orange" type="submit" value="S'enregistrer" />
+            </form>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+    </section>
+{% endblock %}

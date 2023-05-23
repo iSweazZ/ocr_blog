@@ -1,0 +1,42 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Suppression du commentaire{% endblock %}
+
+{% block content %}
+    <section class="banner offset-next-element" style="background-image: url('/ressources/images/monokai/monokai-6.jpg');">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Suppression du commentaire</h1>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom" src="/ressources/images/vectors/vector-bottom-right-white.svg" alt="">
+    </section>
+    <section class="delete-post position-relative">
+        <div class="wrapper">
+            <div class="page management">
+                <h2 class="title">Souhaitez-vous vraiment supprimer le commentaire ?</h2>
+                <div class="single">
+                    <div class="post icon-spacing">
+                        <div class="header">
+                            <h3 class="title"><i class="fas fa-comment-alt"></i>Commentaire</h3>
+                            {% if session.role == 'Admin' %}
+                                <div class="actions icon-spacing white">
+                                    <a class="hide" href="/article/{{ post.identifier }}"><i class="fas fa-eye"></i>Voir</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <p class="description">{{ comment.comment }}</p>
+                        <div class="infos">
+                            <h3><i class="fas fa-user"></i>{{ comment.username }}</h3>
+                            <p><i class="fas fa-calendar"></i>{{ comment.creationDate }}</p>
+                        </div>
+                    </div>
+                </div>
+                <form action="/commentaire/suppression/{{ comment.identifier }}" method="post">
+                    <input class="button-form button-dark-pink" type="submit" value="Supprimer" />
+                </form>
+            </div>
+        </div>
+        <img class="vector-shape vector-shape-bottom z-index-negative-1" src="/ressources/images/vectors/vector-bottom-right-dark-grey.svg" alt="">
+    </section>
+{% endblock %}
