@@ -1,3 +1,4 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4fe48d8029744e25a509aa48c67855d9)](https://app.codacy.com/gh/iSweazZ/ocr_blog/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 # OpenClassrooms
 - Développeur d'application
 - Parcours PHP/Symfony
