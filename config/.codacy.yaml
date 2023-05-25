@@ -1,0 +1,20 @@
+engines:
+  rubocop:
+    exclude_paths:
+      - "config/test.yml"
+    base_sub_dir: "../src"
+  duplication:
+    exclude_paths:
+      - "config/test.yml"
+      - "vendor/*"
+    config:
+      languages:
+        - "php"
+        - "js"
+        - "html"
+languages:
+  css:
+    extensions:
+      - ".css"
+exclude_paths:
+  - "vendor/*"
