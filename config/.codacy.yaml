@@ -2,7 +2,6 @@ engines:
   rubocop:
     exclude_paths:
       - "config/test.yml"
-    base_sub_dir: "../src"
   duplication:
     exclude_paths:
       - "config/test.yml"
